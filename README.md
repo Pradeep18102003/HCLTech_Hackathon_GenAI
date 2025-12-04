@@ -4,14 +4,14 @@ The system preprocesses, chunks, embeds, stores, and retrieves relevant informat
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This project implements a **mini RAG (Retrieval-Augmented Generation)** architecture to build an intelligent assistant that can reason over multiple documents.  
 Users can upload different types of files, ask questions, and the assistant will fetch relevant document context using vector search and generate responses using **Gemini LLM**.
 
 ---
 
-## 🔑 Key Features
+## Key Features
 
 - Accepts **multiple document formats**:
   - PDFs  
@@ -29,7 +29,7 @@ Users can upload different types of files, ask questions, and the assistant will
 
 ---
 
-## 🧠 Architecture
+## Architecture
 User Query
 ↓
 Gemini Text Embedding
@@ -43,7 +43,7 @@ RAG Pipeline → Gemini LLM → Final Response
 
 ---
 
-## 📂 Workflow / Approach
+## Workflow / Approach
 
 ### 1. Document Ingestion
 Users can upload multiple types of documents.  
@@ -66,7 +66,7 @@ All documents undergo:
 ### 3. Embedding Generation
 Each chunk is embedded using:
 
-📌 **Gemini Embeddings API**
+ **Gemini Embeddings API**
 
 These embeddings create numerical representations usable for semantic search.
 
@@ -115,7 +115,7 @@ The app can be deployed easily using **Streamlit Cloud**.
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 ### 1. Clone the repository
 ```bash
