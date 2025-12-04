@@ -1,6 +1,6 @@
 # HCLTech_Hackathon_GenAI
 
-## 🏗️ System Design
+## System Design
 
 The Mini RAG-powered GenAI Assistant is designed as a modular system with clear separation between:
 
@@ -11,7 +11,7 @@ The Mini RAG-powered GenAI Assistant is designed as a modular system with clear 
 
 ---
 
-### 🔹 High-Level Design
+### High-Level Design
 
 At a high level, the system works in two main phases:
 
@@ -29,7 +29,7 @@ At a high level, the system works in two main phases:
 
 ---
 
-### 🔹 Component Design
+### Component Design
 
 #### 1. Streamlit Frontend
 
@@ -98,7 +98,7 @@ The output is a set of **context chunks** that are most relevant to the query.
 
 ---
 
-### 🔹 Data Flow
+### Data Flow
 
 ```text
           ┌─────────────────────┐
