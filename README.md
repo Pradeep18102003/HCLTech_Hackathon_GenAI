@@ -1,5 +1,14 @@
 # HCLTech_Hackathon_GenAI
 
+### Deployed Model
+You can use the deployed model here https://overfiitersbot.streamlit.app/
+
+## Team Members
+- Pradeep Kumar S
+- Yash Garg
+- Indra Yashaswin
+- Rishav Kumar
+
 ## System Design
 
 The Mini RAG-powered GenAI Assistant is designed as a modular system with clear separation between:
@@ -139,5 +148,4 @@ The output is a set of **context chunks** that are most relevant to the query.
           │  (show response)     │
           └─────────────────────┘
 ```
-### Deployed Model
-You can use the deployed model here https://overfiitersbot.streamlit.app/
+
