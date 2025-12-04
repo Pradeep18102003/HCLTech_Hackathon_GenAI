@@ -16,7 +16,7 @@ class RAGApplication:
         # We use 'gemini-1.5-flash-latest' as it is fast and efficient for RAG.
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
-            temperature=0.3
+            temperature=0.5
         )
 
         # 2. Define the Prompt Template

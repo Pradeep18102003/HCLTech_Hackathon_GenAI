@@ -34,7 +34,7 @@ class VectorStoreManager:
         self.vector_db.add_documents(chunks)
         print("✅ Data successfully stored in Vector Database.")
 
-    def get_retriever(self, k: int = 4):
+    def get_retriever(self, k: int = 5):
         """
         Returns a retriever object for querying the database.
         """
