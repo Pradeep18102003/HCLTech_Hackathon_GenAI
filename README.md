@@ -139,23 +139,3 @@ The output is a set of **context chunks** that are most relevant to the query.
           │  (show response)     │
           └─────────────────────┘
 ```
-### Folder Structure
-mini-rag-assistant/
-│
-├── app.py                     # Streamlit entry point
-├── requirements.txt
-├── .env.example               # GEMINI_API_KEY placeholder
-│
-├── config/
-│   └── settings.py            # config (chunk size, top_k, etc.)
-│
-├── core/
-│   ├── ingestion.py           # document loading, cleaning, chunking
-│   ├── embeddings.py          # Gemini embedding helpers
-│   ├── vector_store.py        # ChromaDB wrapper
-│   ├── rag_pipeline.py        # end-to-end RAG orchestration
-│   └── utils.py               # shared helpers (logging, text utils)
-│
-└── data/
-    ├── docs/                  # sample documents
-    └── chroma_db/             # local ChromaDB persistence (if used)
