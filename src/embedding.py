@@ -1,5 +1,7 @@
 import os
 import shutil
+import gc
+import time
 from typing import List
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_chroma import Chroma
@@ -14,7 +16,7 @@ class VectorStoreManager:
         self.persist_directory = persist_directory
         self.embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
         
-        # Initialize ChromaDB (loads from disk if exists, or creates new)
+        # Initialize ChromaDB
         self.vector_db = Chroma(
             persist_directory=self.persist_directory,
             embedding_function=self.embeddings
@@ -25,12 +27,12 @@ class VectorStoreManager:
         Embeds documents and adds them to the vector store.
         """
         if not chunks:
-            print("No chunks to add.")
+            print("⚠️ No chunks to add.")
             return
             
-        print("Saving embeddings to ChromaDB...")
+        print("💾 Saving embeddings to ChromaDB...")
         self.vector_db.add_documents(chunks)
-        print("Data successfully stored in Vector Database.")
+        print("✅ Data successfully stored in Vector Database.")
 
     def get_retriever(self, k: int = 4):
         """
@@ -43,8 +45,29 @@ class VectorStoreManager:
 
     def clear_database(self):
         """
-        Nukes the database directory to start fresh.
+        Safely clears the database by forcing garbage collection first.
         """
+        print("🗑️  Attempting to clear database...")
+        
+        # 1. Delete the Chroma object from memory to release the file handle
+        if hasattr(self, 'vector_db'):
+            # This is critical for Windows: explicitly remove the object
+            del self.vector_db
+            self.vector_db = None
+        
+        # 2. Force Python Garbage Collection to verify files are released
+        gc.collect()
+        
+        # 3. Add a tiny delay to let the OS file system catch up
+        time.sleep(1.0)
+
+        # 4. Delete the folder
         if os.path.exists(self.persist_directory):
-            shutil.rmtree(self.persist_directory)
-            print("Vector database cleared.")
+            try:
+                shutil.rmtree(self.persist_directory)
+                print("✅ Vector database cleared.")
+            except PermissionError:
+                print("❌ PermissionError: Windows is still holding the file lock.")
+                print("👉 TIP: Stop the terminal (Ctrl+C) and delete the 'chroma_db' folder manually.")
+            except Exception as e:
+                print(f"❌ Error deleting database: {e}")

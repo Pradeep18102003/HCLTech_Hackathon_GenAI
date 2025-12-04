@@ -14,3 +14,4 @@ tiktoken
 unstructured
 networkx
 langchain-chroma>=0.1.2
+streamlit
