@@ -139,3 +139,5 @@ The output is a set of **context chunks** that are most relevant to the query.
           │  (show response)     │
           └─────────────────────┘
 ```
+### Deployed Model
+You can use the deployed model here https://overfiitersbot.streamlit.app/
